@@ -1,30 +1,72 @@
-# perpus_app
+# DartPerpusApp
 
-A new Flutter project.
+A Flutter application for book management, including features like book browsing, wishlist, and borrowing functionality.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application that follows the
-[simple app state management
-tutorial](https://flutter.dev/docs/development/data-and-backend/state-mgmt/simple).
+Follow these steps to set up and run the project locally.
 
-For help getting started with Flutter development, view the
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Prerequisites
 
-## Assets
+- [Flutter SDK](https://docs.flutter.dev/get-started/install) (latest stable version recommended)
+- Git
 
-The `assets` directory houses images, fonts, and any other files you want to
-include with your application.
+### Installation
 
-The `assets/images` directory contains [resolution-aware
-images](https://flutter.dev/docs/development/ui/assets-and-images#resolution-aware).
+1. Clone the repository:
 
-## Localization
+   ```bash
+   git clone https://github.com/febriantokristiandev/DartPerpusApp.git
+   ```
 
-This project generates localized messages based on arb files found in
-the `lib/src/localization` directory.
+2. Navigate to the project directory:
 
-To support additional languages, please visit the tutorial on
-[Internationalizing Flutter
-apps](https://flutter.dev/docs/development/accessibility-and-localization/internationalization)
+   ```bash
+   cd DartPerpusApp
+   ```
+
+3. Fetch the dependencies:
+
+   ```bash
+   flutter pub get
+   ```
+
+4. Verify the project setup:
+
+   ```bash
+   flutter doctor
+   ```
+   Ensure there are no errors and all dependencies are installed correctly.
+
+### Running the Application
+
+1. Connect a physical device or start an emulator.
+
+2. Run the app:
+
+   ```bash
+   flutter run
+   ```
+
+   This command will build and launch the app on your connected device/emulator.
+
+### Folder Structure
+
+- `lib/` contains the main application code.
+- `assets/` contains JSON data and image assets.
+- `test/` includes unit and widget tests.
+
+### Troubleshooting
+
+- Ensure you have an active internet connection when fetching dependencies.
+- Use `flutter clean` and `flutter pub get` to resolve build issues.
+- Check logs for errors using `flutter run -v`.
+
+### Contributions
+
+Contributions are welcome! Feel free to fork the repository and submit a pull request.
+
+### License
+
+This project is licensed under the [MIT License](LICENSE).
+
