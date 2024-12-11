@@ -1,0 +1,41 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
+android {
+    namespace = "com.example.perpus_app"
+    compileSdk = 34  // Gunakan SDK 34
+
+    ndkVersion = flutter.ndkVersion
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17  // Gunakan Java 17
+        targetCompatibility = JavaVersion.VERSION_17  // Gunakan Java 17
+    }
+
+    kotlinOptions {
+        jvmTarget = "17"  // Gunakan Kotlin dengan JVM Target 17
+    }
+
+    defaultConfig {
+        applicationId = "com.example.perpus_app"
+        minSdk = 21
+        targetSdk = 34  // Gunakan SDK 34
+        versionCode = flutter.versionCode
+        versionName = flutter.versionName
+    }
+
+    buildTypes {
+        release {
+            // Menggunakan debug signing config untuk release sementara.
+            signingConfig = signingConfigs.debug
+        }
+    }
+}
+
+flutter {
+    source = "../.."  // Menunjukkan lokasi source Flutter
+}
