@@ -3,6 +3,7 @@ import 'pages/login_page.dart';
 import 'pages/home_page.dart';
 import 'pages/buku_page.dart';
 import 'pages/profil_page.dart';
+import 'pages/search_result.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import 'book_provider.dart';
@@ -41,7 +42,6 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   int _selectedIndex = 0;
   String? _selectedCategory;
-  String _searchQuery = "";
   final PageController _pageController = PageController();
 
   final List<Widget> _pages = [
@@ -69,11 +69,11 @@ class _MainPageState extends State<MainPage> {
     );
   }
 
-  void _onSearchChanged(String query) {
-    setState(() {
-      _searchQuery = query;
-    });
-  }
+  // void _onSearchChanged(String query) {
+  //   setState(() {
+  //     _searchQuery = query;
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -86,7 +86,7 @@ class _MainPageState extends State<MainPage> {
             children: _pages.map((page) {
               if (page is HomePage) {
                 return HomePage(
-                    searchQuery: _searchQuery,
+                    // searchQuery: _searchQuery,
                     selectedCategory: _selectedCategory);
               }
               return page;
@@ -182,7 +182,19 @@ class _MainPageState extends State<MainPage> {
                                               BorderRadius.circular(1000),
                                         ),
                                         child: TextField(
-                                          onChanged: _onSearchChanged,
+                                          // onChanged: _onSearchChanged,
+                                          onSubmitted: (String query) {
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    SearchResultPage(
+                                                  searchQuery: query,
+                                                  // selectedCategory: _selectedCategory,
+                                                ),
+                                              ),
+                                            );
+                                          },
                                           decoration: InputDecoration(
                                             prefixIcon: Padding(
                                               padding: EdgeInsets.all(10.0),

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 class BookProvider with ChangeNotifier {
-  List<String> _wishlist = [];
-  List<String> _borrowedBooks = [];
-  List<String> _queue = [];
+  final List<String> _wishlist = [];
+  final List<String> _borrowedBooks = [];
+  final List<String> _queue = [];
 
-  List<Map<String, dynamic>> _actionHistory = [];
+  final List<Map<String, dynamic>> _actionHistory = [];
 
   List<String> get wishlist => _wishlist;
   List<String> get borrowedBooks => _borrowedBooks;

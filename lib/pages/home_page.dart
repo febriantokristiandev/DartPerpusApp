@@ -4,12 +4,12 @@ import 'dart:convert';
 import 'detail_buku_page.dart';
 
 class HomePage extends StatefulWidget {
-  final String searchQuery;
+  // final String searchQuery;
   final String? selectedCategory;
 
   const HomePage({
     Key? key,
-    this.searchQuery = "",
+    // this.searchQuery = "",
     this.selectedCategory,
   }) : super(key: key);
 
@@ -39,23 +39,38 @@ class _HomePageState extends State<HomePage> {
   @override
   void didUpdateWidget(covariant HomePage oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (oldWidget.searchQuery != widget.searchQuery ||
-        oldWidget.selectedCategory != widget.selectedCategory) {
-      _filterBooks(widget.searchQuery, widget.selectedCategory);
+    // if (oldWidget.searchQuery != widget.searchQuery ||
+    //     oldWidget.selectedCategory != widget.selectedCategory) {
+    //   _filterBooks(widget.searchQuery, widget.selectedCategory);
+    // }
+
+    if (oldWidget.selectedCategory != widget.selectedCategory) {
+      _filterBooks(widget.selectedCategory);
     }
   }
 
-  void _filterBooks(String query, String? category) {
+  // void _filterBooks(String query, String? category) {
+  //   setState(() {
+  //     _filteredBooks = _books.where((book) {
+  //       final matchesSearchQuery = query.isEmpty ||
+  //           (book['title']?.toLowerCase() ?? "")
+  //               .contains(query.toLowerCase()) ||
+  //           (book['author']?.toLowerCase() ?? "").contains(query.toLowerCase());
+  //       final matchesCategory = category == null ||
+  //           category == "All categories" ||
+  //           (book['category'] == category);
+  //       return matchesSearchQuery && matchesCategory;
+  //     }).toList();
+  //   });
+  // }
+
+  void _filterBooks(String? category) {
     setState(() {
       _filteredBooks = _books.where((book) {
-        final matchesSearchQuery = query.isEmpty ||
-            (book['title']?.toLowerCase() ?? "")
-                .contains(query.toLowerCase()) ||
-            (book['author']?.toLowerCase() ?? "").contains(query.toLowerCase());
         final matchesCategory = category == null ||
             category == "All categories" ||
             (book['category'] == category);
-        return matchesSearchQuery && matchesCategory;
+        return matchesCategory;
       }).toList();
     });
   }
@@ -115,7 +130,6 @@ class _HomePageState extends State<HomePage> {
                                   children: [
                                     GestureDetector(
                                       onTap: () {
-                                        // Navigasi ke halaman detail buku saat gambar diklik
                                         Navigator.push(
                                           context,
                                           MaterialPageRoute(
@@ -167,7 +181,6 @@ class _HomePageState extends State<HomePage> {
                                         const SizedBox(height: 4),
                                         GestureDetector(
                                           onTap: () {
-                                            // Navigasi ke halaman detail buku saat label diklik
                                             Navigator.push(
                                               context,
                                               MaterialPageRoute(

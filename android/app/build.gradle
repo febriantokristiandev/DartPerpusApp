@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.perpus_app"
+    namespace = "com.perpus.malangcilindigitalaccess"
     compileSdk = 34  // Gunakan SDK 34
 
     ndkVersion = flutter.ndkVersion
@@ -17,11 +17,11 @@ android {
     }
 
     kotlinOptions {
-        jvmTarget = "17"  // Gunakan Kotlin dengan JVM Target 17
+        jvmTarget = "17"  
     }
 
     defaultConfig {
-        applicationId = "com.example.perpus_app"
+        applicationId = "com.perpus.malangcilindigitalaccess"
         minSdk = 21
         targetSdk = 34  // Gunakan SDK 34
         versionCode = flutter.versionCode
@@ -30,7 +30,6 @@ android {
 
     buildTypes {
         release {
-            // Menggunakan debug signing config untuk release sementara.
             signingConfig = signingConfigs.debug
         }
     }

@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import '../book_provider.dart';
+import './read_book_page.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class BookDetailPage extends StatelessWidget {
   final Map<String, dynamic> book;
 
-  const BookDetailPage({Key? key, required this.book}) : super(key: key);
+  const BookDetailPage({super.key, required this.book});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +22,7 @@ class BookDetailPage extends StatelessWidget {
           'Detail Buku',
           style: TextStyle(
             fontSize: 16,
-            fontWeight: FontWeight.w600,
+            fontWeight: FontWeight.normal,
             color: Color(0xFF545454),
             fontFamily: 'Poppins',
           ),
@@ -629,20 +630,32 @@ class BookDetailPage extends StatelessWidget {
                         bookProvider.removeFromWishlist(book['id'].toString());
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
-                            content: Text('Book removed from Wishlist'),
+                            content: Text('Buku dihapus dari Wishlist'),
                             duration: Duration(seconds: 2),
                           ),
                         );
                       }
-                    : () {
-                        bookProvider.addToWishlist(book['id'].toString());
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text('Book added to Wishlist'),
-                            duration: Duration(seconds: 2),
-                          ),
-                        );
-                      },
+                    : isBorrowed
+                        ? () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => ReadBookPage(
+                                  title: book['title'].toString(),
+                                  directory: book['directory'],
+                                ),
+                              ),
+                            );
+                          }
+                        : () {
+                            bookProvider.addToWishlist(book['id'].toString());
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text('Buku ditambahkan ke Wishlist'),
+                                duration: Duration(seconds: 2),
+                              ),
+                            );
+                          },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: isBorrowed
                       ? const Color(0xFF7B94E4)
@@ -688,7 +701,7 @@ class BookDetailPage extends StatelessWidget {
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(
                                 content: Text(
-                                    'Book is unavailable. You are added to the waiting list.'),
+                                    'Buku sedang tidak tersedia. Anda ditambahkan ke antrean.'),
                                 duration: Duration(seconds: 2),
                               ),
                             );
@@ -698,7 +711,7 @@ class BookDetailPage extends StatelessWidget {
                             bookProvider.returnBook(book['id'].toString());
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(
-                                content: Text('Book returned successfully'),
+                                content: Text('Buku telah dikembalikan'),
                                 duration: Duration(seconds: 2),
                               ),
                             );
@@ -707,7 +720,7 @@ class BookDetailPage extends StatelessWidget {
                             bookProvider.borrowBook(book['id'].toString());
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(
-                                content: Text('Book borrowed successfully'),
+                                content: Text('Buku berhasil dipinjam'),
                                 duration: Duration(seconds: 2),
                               ),
                             );

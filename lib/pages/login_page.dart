@@ -17,8 +17,10 @@ class _LoginPageState extends State<LoginPage> {
   bool _obscureText = true;
 
   Future<void> _login(BuildContext context) async {
-    const String validUsername = "";
-    const String validPassword = "";
+    const String validUsername = "user@gmail.com";
+    const String validPassword = "user123";
+    // const String validUsername = "";
+    // const String validPassword = "";
 
     String email = emailController.text.trim();
     String password = passwordController.text.trim();

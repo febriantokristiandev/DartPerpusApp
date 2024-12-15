@@ -1,4 +1,4 @@
-package com.example.perpus_app
+package com.perpus.malangcilindigitalaccess
 
 import io.flutter.embedding.android.FlutterActivity
 
